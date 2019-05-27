@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+  --primary-color: #3f51b5;
+}
+
+mat-sidenav {
+  min-width: 16.25rem;
+}
+
+.mat-toolbar.mat-primary {
+  background: #002984;
+  color: #fff;
+}
+
+app-page-header {
+  display: flex;
+  align-items: center;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-content {
+  padding: 2.25rem 2.25rem .75rem;
+}
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.cell-right .mat-header-cell {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cell-center .mat-sort-header-container {
+  justify-content: center;
+}
+
+// Contenido de cada pagina
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.example-card {
+  max-height: 80%;
+}
+
+.table-container {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+
+  th {
+    width: calc(100% / 3);
+  }
+}

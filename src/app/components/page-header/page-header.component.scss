@@ -1,0 +1,16 @@
+.primary-header {
+  background: var(--primary-color);
+  padding-left: 20px;
+  width: 100%;
+  h1 {
+    font-weight: 300;
+    margin: 0;
+    padding: 28px 8px;
+    font-size: 20px;
+    color: #fff;
+  }
+}
+
+h1 {
+  outline: 0;
+}

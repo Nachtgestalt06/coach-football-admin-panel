@@ -1,0 +1,22 @@
+<div class="center row mt-5" id="brand">
+  <img class="brand" src="/assets/brand/logo.png" width="250" height="80" alt="">
+</div>
+
+<div class="row">
+  <form [formGroup]="formulario" (ngSubmit)="login()">
+    <h1>Iniciar sesión</h1>
+    <div class="form-container">
+      <mat-form-field>
+        <input formControlName="username" name="username"  matInput placeholder="Ingresa tu usuario"
+               [(ngModel)]="formulario.value.username" required>
+        <mat-error *ngIf="!formulario.get('username').valid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="password" name="password" matInput placeholder="Ingresa tu contraseña" type="password"
+               [(ngModel)]="formulario.value.password" required>
+        <mat-error *ngIf="!formulario.get('password').valid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Iniciar sesión</button>
+    </div>
+  </form>
+</div>
