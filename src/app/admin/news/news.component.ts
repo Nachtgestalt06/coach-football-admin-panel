@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {AddNewComponent} from './add-new/add-new.component';
 
 @Component({
   selector: 'app-news',
@@ -13,9 +14,20 @@ export class NewsComponent implements OnInit {
   displayedColumns: string[] = ['title', 'description', 'edit'];
   dataSource: MatTableDataSource<Array<any>> = new MatTableDataSource([]);
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {
+  }
 
   ngOnInit() {
+  }
+
+  openDialogSave() {
+    const dialogRef = this.dialog.open(AddNewComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   applyFilter(filterValue: string) {

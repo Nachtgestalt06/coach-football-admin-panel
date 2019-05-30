@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {AddBetComponent} from './add-bet/add-bet.component';
 
 @Component({
   selector: 'app-bets',
@@ -14,9 +15,19 @@ export class BetsComponent implements OnInit {
   displayedColumns: string[] = ['title', 'description', 'edit'];
   dataSource: MatTableDataSource<Array<any>> = new MatTableDataSource([]);
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
+  }
+
+  openDialogSave() {
+    const dialogRef = this.dialog.open(AddBetComponent, {
+      width: '30vw',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   applyFilter(filterValue: string) {

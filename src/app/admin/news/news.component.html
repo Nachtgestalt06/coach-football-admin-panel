@@ -27,7 +27,7 @@
           <!-- Opciones Column -->
           <ng-container matColumnDef="edit">
             <th mat-header-cell *matHeaderCellDef class="cell-right">
-              <button mat-flat-button color="primary">
+              <button mat-flat-button color="primary" (click)="openDialogSave()">
                 <mat-icon>library_add</mat-icon>
                 Agregar noticia
               </button>

@@ -5,6 +5,7 @@ import {MaterialModule} from '../material.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {PublicRoutes} from './public.routes';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -12,6 +13,7 @@ import {PublicRoutes} from './public.routes';
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
+    HttpClientModule,
     RouterModule.forChild(PublicRoutes)
   ]
 })

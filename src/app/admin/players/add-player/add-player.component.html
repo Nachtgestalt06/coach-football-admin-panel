@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Agregar equipo</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Equipo</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{food.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Nombre"
+             formControlName="titulo">
+      <mat-error *ngIf="!form.get('titulo').valid"> Campo requerido </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Posición</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let position of positions" [value]="position.value">
+          {{position.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Precio"
+             formControlName="titulo">
+      <mat-error *ngIf="!form.get('titulo').valid"> Campo requerido </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="descripcion" name="username" matInput placeholder="URL foto">
+      <mat-error *ngIf="!form.get('descripcion').valid"> Campo requerido </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="descripcion" name="username" matInput placeholder="Puntos">
+      <mat-error *ngIf="!form.get('descripcion').valid"> Campo requerido </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="savePlayer()" cdkFocusInitial>Guardar</button>
+</div>
