@@ -1,9 +1,18 @@
 <div class="main-content">
-  <mat-card>
-    <!--    <mat-card-header>-->
-    <!--      <mat-card-title>Noticias</mat-card-title>-->
-    <!--    </mat-card-header>-->
+  <mat-card style="margin-bottom: 1rem">
+    <mat-card-header>
+      <mat-form-field>
+        <mat-label>Equipo</mat-label>
+        <mat-select (selectionChange)="loadPlayers($event.value)">
+          <mat-option *ngFor="let team of teams | async" [value]="team.equipoId">
+            {{team.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-header>
+  </mat-card>
 
+  <mat-card>
     <mat-card-content>
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="¿Que estas buscando?">
@@ -12,45 +21,58 @@
       <div class="table-container">
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-          <!-- Titulo Column -->
-          <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-center"> Título</th>
-            <td mat-cell *matCellDef="let row"> {{row.titulo}} </td>
+          <!-- Foto Column -->
+          <ng-container matColumnDef="foto">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Foto</th>
+            <td mat-cell *matCellDef="let row">
+              <img [src]="row.fotoUrl" class="team_logo">
+            </td>
           </ng-container>
 
-          <!-- Cantidad Column -->
-          <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell-center"> Descripción</th>
-            <td mat-cell *matCellDef="let row"> {{row.cantidad}} </td>
+          <!-- Nombre Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre</th>
+            <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+          </ng-container>
+
+          <!-- Posicion Column -->
+          <ng-container matColumnDef="posicion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Posición</th>
+            <td mat-cell *matCellDef="let row"> {{row.posicion}} </td>
+          </ng-container>
+
+          <!-- Precio Column -->
+          <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio</th>
+            <td mat-cell *matCellDef="let row"> {{row.precio}} </td>
+          </ng-container>
+
+          <!-- Precio Column -->
+          <ng-container matColumnDef="puntos">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Puntos</th>
+            <td mat-cell *matCellDef="let row"> {{row.puntos}} </td>
           </ng-container>
 
           <!-- Opciones Column -->
           <ng-container matColumnDef="edit">
             <th mat-header-cell *matHeaderCellDef class="cell-right">
-              <button mat-flat-button color="primary" (click)="openDialogSave()">
+              <button mat-flat-button color="primary" (click)="openDialogSave('new')">
                 <mat-icon>library_add</mat-icon>
                 Agregar jugador
               </button>
             </th>
             <td mat-cell *matCellDef="let row; let i = index">
-              <!--              <button (click)="inventario(i, row.claveProducto, true)" mat-mini-fab color="primary"-->
-              <!--                      matTooltip="Entrada"-->
-              <!--                      aria-label="Button that displays a tooltip when focused or hovered over">-->
-              <!--                <mat-icon>add</mat-icon>-->
-              <!--                {{row.index}}-->
-              <!--              </button>-->
-              <!--              <button (click)="inventario(i, row.claveProducto, false)" mat-mini-fab color="primary"-->
-              <!--                      matTooltip="Salida"-->
-              <!--                      aria-label="Button that displays a tooltip when focused or hovered over">-->
-              <!--                <mat-icon>remove</mat-icon>-->
-              <!--                {{row.index}}-->
-              <!--              </button>-->
-              <!--              <button (click)="historial(row.claveProducto)" mat-mini-fab color="accent"-->
-              <!--                      matTooltip="Historial"-->
-              <!--                      aria-label="Button that displays a tooltip when focused or hovered over">-->
-              <!--                <mat-icon>history</mat-icon>-->
-              <!--                {{row.index}}-->
-              <!--              </button>-->
+              <button mat-icon-button color="primary"
+                      matTooltip="Editar noticia"
+                      (click)="openDialogSave('edit', row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+
+              <button mat-icon-button color="warn"
+                      matTooltip="Eliminar noticia"
+                      (click)="deletePlayer(row)">
+                <mat-icon>delete_forever</mat-icon>
+              </button>
             </td>
           </ng-container>
 

@@ -15,6 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AddBetComponent} from './bets/add-bet/add-bet.component';
 import {AddTeamComponent} from './teams/add-team/add-team.component';
 import {AddPlayerComponent} from './players/add-player/add-player.component';
+import {MatTooltipModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {AddPlayerComponent} from './players/add-player/add-player.component';
     MaterialModule,
     ComponentsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(AdminRoutes)
+    RouterModule.forChild(AdminRoutes),
   ],
   entryComponents: [
     AddNewComponent,

@@ -25,8 +25,10 @@ export class AuthService {
       .pipe(
         tap((res: any) => {
           console.log(res);
-          sessionStorage.set(TOKEN_KEY, `${res.token}`);
-          this.authenticationState.next(true);
+          if (res) {
+            sessionStorage.setItem(TOKEN_KEY, `${res.token}`);
+            this.authenticationState.next(true);
+          }
         })
       );
   }

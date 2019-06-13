@@ -3,37 +3,39 @@
   <form [formGroup]="form">
     <mat-form-field>
       <mat-label>Equipo</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let food of foods" [value]="food.value">
-          {{food.viewValue}}
+      <mat-select formControlName="equipoId">
+        <mat-option *ngFor="let team of teams | async" [value]="team.equipoId">
+          {{team.nombre}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="!form.get('equipoId').valid"> Campo requerido </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Nombre"
-             formControlName="titulo">
-      <mat-error *ngIf="!form.get('titulo').valid"> Campo requerido </mat-error>
+             formControlName="nombre">
+      <mat-error *ngIf="!form.get('nombre').valid"> Campo requerido </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Posición</mat-label>
-      <mat-select>
+      <mat-select formControlName="posicion">
         <mat-option *ngFor="let position of positions" [value]="position.value">
           {{position.viewValue}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="!form.get('posicion').valid"> Campo requerido </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Precio"
-             formControlName="titulo">
-      <mat-error *ngIf="!form.get('titulo').valid"> Campo requerido </mat-error>
+             formControlName="precio">
+      <mat-error *ngIf="!form.get('precio').valid"> Campo requerido </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input formControlName="descripcion" name="username" matInput placeholder="URL foto">
-      <mat-error *ngIf="!form.get('descripcion').valid"> Campo requerido </mat-error>
+      <input formControlName="fotoUrl" name="username" matInput placeholder="URL foto">
+      <mat-error *ngIf="!form.get('fotoUrl').valid"> Campo requerido </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input formControlName="descripcion" name="username" matInput placeholder="Puntos">
-      <mat-error *ngIf="!form.get('descripcion').valid"> Campo requerido </mat-error>
+      <input formControlName="puntos" matInput placeholder="Puntos">
+      <mat-error *ngIf="!form.get('puntos').valid"> Campo requerido </mat-error>
     </mat-form-field>
   </form>
 </div>

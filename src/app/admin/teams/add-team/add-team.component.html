@@ -3,12 +3,12 @@
   <form [formGroup]="form">
     <mat-form-field>
       <input matInput placeholder="Nombre"
-             formControlName="titulo">
-      <mat-error *ngIf="!form.get('titulo').valid"> Campo requerido </mat-error>
+             formControlName="nombre">
+      <mat-error *ngIf="!form.get('nombre').valid"> Campo requerido </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input formControlName="descripcion" name="username" matInput placeholder="URL logo">
-      <mat-error *ngIf="!form.get('descripcion').valid"> Campo requerido </mat-error>
+      <input formControlName="logoUrl" name="username" matInput placeholder="URL logo">
+      <mat-error *ngIf="!form.get('logoUrl').valid"> Campo requerido </mat-error>
     </mat-form-field>
   </form>
 </div>

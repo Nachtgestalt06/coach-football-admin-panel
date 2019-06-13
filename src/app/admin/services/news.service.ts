@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,28 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
+  listNews() {
+    const url = `${this.URL_NEWS}s`;
+    return this.http.get(url).pipe(
+      map((res: any) => res.response)
+    );
+  }
+
   createNew(payload) {
     const url = `${this.URL_NEWS}`;
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post(url, payload, {headers});
+    return this.http.post(url, payload);
+  }
+
+  updateNew(payload, id) {
+    const url = `${this.URL_NEWS}/${id}`;
+    return this.http.put(url, payload);
+  }
+
+  deleteNew(id) {
+    const url = `${this.URL_NEWS}/${id}`;
+    return this.http.delete(url)
+      .pipe(
+        map((res: any) => res.response)
+      );
   }
 }

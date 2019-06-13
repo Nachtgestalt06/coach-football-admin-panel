@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-login',
@@ -25,11 +26,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.router.navigate(['/admin']);
-    // this.authService.login(this.loginForm.value).subscribe(res => {
-    //   console.log(res);
-    //   this.router.navigate(['/admin']);
-    // });
+    // this.router.navigate(['/admin']);
+    this.authService.login(this.loginForm.value).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['/admin']);
+    },
+      error =>  swal('Error al iniciar sesión', 'Usuario y contraseña invalidos', 'error'));
   }
 
   getErrorMessage() {
